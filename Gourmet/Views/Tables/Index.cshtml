@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Gourmet.Models.Table>
+
+<table class="table">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.IsFree)
+        </th>
+        <th class="table_actions_wrapper"></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr class="_table_row" data-id="@item.Id">
+            @Html.Partial("TableRowInner", @item)
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+<script src="~/Scripts/Tables.js"></script>

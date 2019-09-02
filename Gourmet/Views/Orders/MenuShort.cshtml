@@ -1,0 +1,12 @@
+﻿@if( ViewBag.Dishes != null )
+{
+    foreach (var item in ViewBag.Dishes)
+    {
+        <div class="one_dish">
+            <span class="dish_mul">@item.Value</span>
+            <span class="dish_gap">x </span>
+            <span class="dish_name">@item.Key</span>
+        </div>
+    }
+}
+<input type="hidden" name="menu" value="@ViewBag.DishesJson" />

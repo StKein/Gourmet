@@ -1,0 +1,45 @@
+﻿.content_header{
+    margin-bottom: 30px;
+}
+.table_seat{
+    cursor: pointer;
+}
+.table_actions_wrapper{
+    width: 280px;
+}
+.action_elem{
+    border-bottom: 1px dashed;
+    cursor: pointer;
+}
+.order_cancel{
+    color: red;
+}
+.order_complete{
+    color: green;
+}
+.order_dish_count{
+    width: 60px;
+}
+.popup_background{
+    background-color: #fff;
+    display: none;
+    height: 100%;
+    opacity: 0.9;
+    position: fixed;
+    width: 100%;
+    z-index: 101;
+}
+.popup_window{
+    display: none;
+    height: 80%;
+    left: 50%;
+    margin: 50px 0 0 -400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    width: 800px;
+    z-index: 103;
+}
+.field-validation-error{
+    color: red;
+}

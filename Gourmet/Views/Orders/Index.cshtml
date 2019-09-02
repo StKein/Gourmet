@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Gourmet.Models.Order>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Table)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Waiter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Menu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model)
+{
+    <tr class="_order_row" data-id="@item.Id">
+        @Html.Partial("OrderRowInner", @item)
+    </tr>
+}
+</table>
+
+<script src="~/Scripts/Orders.js"></script>

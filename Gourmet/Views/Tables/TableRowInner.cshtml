@@ -1,0 +1,35 @@
+﻿@model Gourmet.Models.Table
+
+<td class="text-center">
+    @Html.DisplayFor(model => model.Id)
+</td>
+<td class="text-center">
+    @Html.DisplayFor(model => model.Capacity)
+</td>
+<td class="text-center">
+    @if (Model.IsFree)
+    {
+        <img class="table_seat _table_seat" src="~/Content/Images/good.png" data-free="1" />
+    }
+    else
+    {
+        <img class="table_seat _table_seat" src="~/Content/Images/bad.png" data-free="0" />
+    }
+</td>
+<td>
+    <div class="_table_order_wrapper" data-id="@Model.CurrentOrder">
+        @if (Model.IsFree)
+        {
+            <div>@Html.ActionLink("Изменить", "Edit", new { id = Model.Id })</div>
+            <div>@Html.ActionLink("Удалить", "Delete", new { id = Model.Id })</div>
+        }
+        else if (Model.CurrentOrder > 0)
+        {
+            <div>@Html.ActionLink("Перейти к заказу", "Index/" + Model.CurrentOrder, "Orders")</div>
+        }
+        else
+        {
+            <div>@Html.ActionLink("Оформить заказ", "Create/" + Model.Id, "Orders")</div>
+        }
+    </div>
+</td>

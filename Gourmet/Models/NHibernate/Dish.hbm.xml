@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Gourmet" namespace="Gourmet.Models">
+  <class name="Dish" table="dishes">
+    <id name="Id" column="ID" type="int">
+      <generator class="native"></generator>
+    </id>
+    <property name="Name" column="name"></property>
+    <property name="Cost" column="cost"></property>
+    <property name="Weight" column="weight"></property>
+    <property name="VeganFriendly" column="vegan_friendly"></property>
+  </class>
+</hibernate-mapping>

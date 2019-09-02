@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+    <div class="popup_background _popup_background"></div>
+    <div class="popup_window _popup_window"></div>
+    <div class="container body-content">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-collapse">
+                <div class="nav">
+                    <span class="nav-item">@Html.ActionLink(
+                                                "Главная", "Index", "Main", new object(), new { @class = "nav-link" }
+                                            )</span>
+                    <span class="nav-item">@Html.ActionLink(
+                                                "Персонал", "Index", "Personnel", new object(), new { @class = "nav-link" }
+                                            )</span>
+                    <span class="nav-item">@Html.ActionLink(
+                                                "Меню", "Index", "Dishes", new object(), new { @class = "nav-link" }
+                                            )</span>
+                    <span class="nav-item">@Html.ActionLink(
+                                                "Столы", "Index", "Tables", new object(), new { @class = "nav-link" }
+                                            )</span>
+                    <span class="nav-item">@Html.ActionLink(
+                                                "Заказы", "Index", "Orders", new object(), new { @class = "nav-link" }
+                                            )</span>
+                </div>
+            </div>
+        </div>
+        <h1 class="content_header">@ViewBag.Title</h1>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Gourmet</p>
+        </footer>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/common.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@model Gourmet.Models.Dish
+
+@using (Html.BeginForm("Item", "Dishes", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Cost)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Cost)
+                @Html.ValidationMessageFor(model => model.Cost)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Weight)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Weight)
+                @Html.ValidationMessageFor(model => model.Weight)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.VeganFriendly)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(x => x.VeganFriendly)
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary ml-3 mr-2">Сохранить</button>
+            @Html.ActionLink("Отмена", "Index", "Dishes", new object(), new { @class = "btn btn-danger" })
+        </div>
+    </fieldset>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

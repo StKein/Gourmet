@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Gourmet.Models.Dish>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VeganFriendly)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @( ( item.VeganFriendly ) ? "Да" : "Нет" )
+        </td>
+        <td>
+            @if (ViewBag.DishListForOrder != null)
+            {
+                <input type="number" class="order_dish_count _order_dish_count" name="@item.Id" min="0" 
+                       value="@( (ViewBag.Dishes != null 
+                                        && ViewBag.Dishes.ContainsKey(item.Id.ToString())
+                                    ) ? ViewBag.Dishes[item.Id.ToString()] : 0)" />
+            }
+            else
+            {
+                <div>@Html.ActionLink("Изменить", "Edit", new { id=item.Id })</div>
+                <div>@Html.ActionLink("Удалить", "Delete", new { id=item.Id })</div>
+            }
+        </td>
+    </tr>
+}
+
+</table>

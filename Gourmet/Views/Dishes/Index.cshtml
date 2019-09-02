@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Gourmet.Models.Dish>
+
+@Html.Partial("DishList", @Model)
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>

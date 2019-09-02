@@ -1,0 +1,25 @@
+﻿@model Gourmet.Models.Table
+
+@using (Html.BeginForm("Item", "Tables", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Capacity)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Capacity)
+                @Html.ValidationMessageFor(model => model.Capacity)
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary ml-3 mr-2">Сохранить</button>
+            @Html.ActionLink("Отмена", "Index", "Tables", new object(), new { @class = "btn btn-danger" })
+        </div>
+    </fieldset>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

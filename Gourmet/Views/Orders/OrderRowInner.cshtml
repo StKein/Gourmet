@@ -1,0 +1,31 @@
+﻿@model Gourmet.Models.Order
+
+<td>
+    @Html.DisplayFor(model => model.Table)
+</td>
+<td>
+    @Html.DisplayFor(model => model.WaiterName)
+</td>
+<td>
+    @{
+        ViewBag.Dishes = Model.MenuDescription;
+        ViewBag.DishesJson = Model.Menu;
+    }
+    @Html.Partial("MenuShort")
+</td>
+<td>
+    @Html.DisplayFor(model => model.StatusDescription)
+</td>
+<td class="_order_finish_wrapper">
+    @if (Model.Status == 0)
+    {
+        <div>@Html.ActionLink("Изменить", "Edit", new { id = Model.Id })</div>
+        <div>
+            <span class="action_elem order_cancel _order_finish" data-status="-1">Отменить</span>
+        </div>
+        <div>
+            <span class="action_elem order_complete _order_finish" data-status="1">Завершить</span>
+        </div>
+    }
+</td>
+

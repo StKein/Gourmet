@@ -1,0 +1,51 @@
+﻿@model Gourmet.Models.Order
+
+@using (Html.BeginForm("Item", "Orders", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <fieldset class="_order_wrapper">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="hidden" name="table" value="@Model.Table" />
+        <input type="hidden" name="waiter" value="@Model.Waiter" />
+        <div class="form-group">
+            <div class="editor-label">
+                № стола:
+            </div>
+            <div class="editor-field">
+                @Model.Table
+                @Html.ValidationMessageFor(model => model.Table)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                Официант:
+            </div>
+            <div class="editor-field">
+                @Model.WaiterName
+                @Html.ValidationMessageFor(model => model.Waiter)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                Блюда:
+            </div>
+            <div class="editor-field">
+                <div id="order_menu">
+                    @{ ViewBag.DishesJson = Model.Menu; }
+                    @Html.Partial("MenuShort")
+                </div>
+                <span class="action_elem _order_go_menu">Изменить</span>
+                @Html.ValidationMessageFor(model => model.Menu)
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary ml-3 mr-2">Сохранить</button>
+            @{ string backlink_controller = (@Model.Id > 0) ? "Orders" : "Tables"; }
+            @Html.ActionLink("Отмена", "Index", backlink_controller, new object(), new { @class = "btn btn-danger" })
+        </div>
+    </fieldset>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/Orders.js"></script>
